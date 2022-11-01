@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import './bottom_button.dart';
 import './icon_content.dart';
 import './reusable_card.dart';
 import './round_icon_button.dart';
@@ -14,9 +15,9 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
-  int height = 160;
-  int weight = 60;
-  int age = 20;
+  int height = 120;
+  int weight = 74;
+  int age = 18;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -196,17 +197,11 @@ class _InputPageState extends State<InputPage> {
               )
             ],
           )),
-          Container(
-            child: Center(
-              child: Text(
-                "CALCULATE",
-                style: kLargeButtonTextStyle,
-              ),
-            ),
-            color: kBottomContainerColor,
-            margin: EdgeInsets.only(top: 10),
-            width: double.infinity,
-            height: kBottomContainerHeight,
+          BottomButton(
+            title: 'CALCULATE',
+            onTap: () {
+              print("Calculate");
+            },
           ),
         ],
       ),
