@@ -13,7 +13,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
-  
+  int height = 160;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +62,48 @@ class _InputPageState extends State<InputPage> {
           )),
           Expanded(
             child: ReusableCard(
-              child: Container()
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'HEIGHT',
+                    style: kLabelTextStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(height.toString(), style: kNumberTextStyle),
+                      Text(
+                        'cm',
+                        style: kLabelTextStyle,
+                      )
+                    ],
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 18),
+                        trackHeight: 1,
+                        inactiveTrackColor: Color(0xFF8D8E98),
+                        activeTrackColor: Colors.white,
+                        overlayColor: Color(0x1fEB1555),
+                        thumbColor: Color(0xFFEB1555),
+                        overlayShape:
+                            RoundSliderOverlayShape(overlayRadius: 30)),
+                    child: Slider(
+                        value: height.toDouble(),
+                        min: 120,
+                        max: 220,
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.round();
+                          });
+                        }),
+                  ),
+                ],
+              ),
             ),
           ),
           Expanded(
@@ -70,7 +111,7 @@ class _InputPageState extends State<InputPage> {
             children: [
               Expanded(
                 child: ReusableCard(
-                  child: Container(),
+                  child: Container()
                 ),
               ),
               Expanded(
